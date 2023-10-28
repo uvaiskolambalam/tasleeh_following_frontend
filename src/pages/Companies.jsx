@@ -5,6 +5,7 @@ import { DataGrid, GridToolbar, GridToolbarContainer, GridToolbarExport } from '
 import { Box, Paper, Stack, Typography, Button } from '@mui/material';
 import { useDispatch, useSelector } from "react-redux";
 // import FormDialog from '../components/add-new/FormDialog';
+import AddCompanyDetails from '../components/addCompanyDetails/AddCompanyDetails';
 import Search from '../components/Table/SearchInput';
 import Addcompany from '../components/add-company-modal/Addcompany';
 import SERVER_URL from '../utils/axios';
@@ -23,9 +24,10 @@ const data = [
 ];
 
 const columns = [
-  // { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'email', headerName: 'email', width: 300 },
-  { field: 'companyName', headerName: 'companyName', width: 150 },
+  { field: 'company_name', headerName: 'Company Name', width: 350 },
+  { field: 'company_code', headerName: 'Company Code', width: 250 },
+  { field: 'mensha_no', headerName: 'Mensha Number', width: 250 },
+ 
 ];
 
 function CustomToolbar() {
@@ -52,7 +54,7 @@ const Table = () => {
   const navigate=useNavigate()
   // const handleClose = () => setOpen(false);
   // const [open, setOpen] = useState(false);
-  const [filteredData, setFilteredData] = useState('');
+  const [filteredData, setFilteredData] = useState([]);
   // const [CompanyDatas, setCompanyDatas] = useState('')
   // const [allData, setA] = useState(data);
 
@@ -74,17 +76,6 @@ const Table = () => {
     const addNewCompany = () => {
         console.log('addddd');
     }
-
-
-  
-  
-
-
-
-
-
-
-
   // const dispatch = useDispatch()
   const getCompanyDetails = async () => {
     try {
@@ -93,6 +84,7 @@ const Table = () => {
      
       const companyAllDetails = response.data.company
       setFilteredData(companyAllDetails)
+      console.log(companyAllDetails,'comapny detail');
         
       } catch (error) {
         console.log(error, 'error');
@@ -105,63 +97,38 @@ const Table = () => {
   }
   const handleClose = () => setOpen(false);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   useEffect(() => {
-    // const getCompanyDetails = async () => {
-    //   try {
-    //     const response = await SERVER_URL.get('/companies/getCompanyDetails')
-    //     console.log('lll');
-    //     console.log(response.data);
-    //     const companyAllDetails = response.data.company
-          
-    //     } catch (error) {
-    //       console.log(error, 'error');
-    //     }
-    // }
-    // setFilteredData(companyAllDetails)
     getCompanyDetails()
   }, [])
-  const handleCompany = () => {
-    navigate('/dashboard/companies/users')
+  const handleCompany = (event,) => {
+
+    const rowId=event.row._id
+    navigate(`/dashboard/companies/users/${rowId}`)
+  }
+  const handleCompanyDatas = async (companyDatas) => {
+    const response = await SERVER_URL.post('/companies/companies', companyDatas)
+    getCompanyDetails()
   }
   return (
     <Paper sx={{ p: 2 }}>
       <Stack direction="row" justifyContent="space-between" alignItems="center" flexWrap>
         <Typography variant="h4">Users</Typography>
               <Search handleSearch={handleSearch} />
-              {/* <Button variant="contained" onClick={addNewCompany}>Add</Button> */}
-        {/* <FormDialog /> */}
-        {/* <Button>bbb</Button> */}
-        
-        <Addcompany
-          updateCompanyData={updateCompanyData}
-          handleClose={handleClose}
-          handleOpen={handleOpen}
-          open={open}
-        
+        <AddCompanyDetails
+          handleCompanyDatas={handleCompanyDatas}
         />
       </Stack>
-
-          <Box sx={{ height: 400, width: '100%', mt: 2 }}>
-              
-              <DataGrid
+          <Box sx={{ height: 500, width: '100%', mt: 2 }}> 
+          <DataGrid
           onRowClick={handleCompany}
-          // rows={rows}
           rows={filteredData}
           columns={columns}
           initialState={{
             pagination: { paginationModel: { pageSize: 5 } },
           }}
-          // getRowId={filteredData.map((item, index) => {
-            
-          // })}
-          pageSizeOptions={[5, 10, 25]}
-          checkboxSelection
+          pageSizeOptions={[10, 20, 50]}
           getRowId={(row) => row._id}
-          
-          // getRowId={(row) => row.internalId} 
-
-          disableRowSelectionOnClick
           slots={{
             toolbar: CustomToolbar,
                   }}

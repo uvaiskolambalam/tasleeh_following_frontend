@@ -1,0 +1,11 @@
+.expiryOne{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 5rem;
+}
+.exp{
+    padding: 0;
+    margin: 0;
+}

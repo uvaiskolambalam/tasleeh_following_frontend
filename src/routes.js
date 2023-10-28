@@ -14,6 +14,7 @@ import DashboardAppPage from './pages/DashboardAppPage';
 import Tables from './components/Table/TableGrid'
 // import Users from './pages/Users';
 import UserList from './pages/UserLIst';
+import Familys from './pages/Familys';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -24,10 +25,10 @@ export default function Router() {
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
-        { path: 'user', element: <Tables /> },
+        { path: 'familys', element: <Familys/> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'companies', element: <CompaniesPage/> },
-        { path: 'companies/users', element: <UserList/> },
+        { path: 'companies/users/:companyId', element: <UserList/> },
         { path: 'invoice', element:  <InvoicePage/> },
         { path: 'blog', element: <BlogPage /> },
         // { path: 'companies/', element: <BlogPage /> },

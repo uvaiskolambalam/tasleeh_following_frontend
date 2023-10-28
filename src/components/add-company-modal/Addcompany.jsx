@@ -15,6 +15,7 @@ import * as yup from 'yup';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import SERVER_URL from '../../utils/axios';
 
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -80,7 +81,7 @@ export default function Addcompany({
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>ADD</Button>
       <Modal
         open={open}
         // onClose={handleClose}
