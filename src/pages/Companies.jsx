@@ -59,14 +59,23 @@ const Table = () => {
   // const [allData, setA] = useState(data);
 
   const handleSearch = (event) => {
-    const searchTerm = event.target.value.toLowerCase();
+    console.log(event,'evvu');
+    const searchTerm = event.target.value.toUpperCase()
+    console.log(searchTerm,'evvu');
 
-    const filteredRows = filteredData.filter((row,index) =>
-      Object.values(row).some((value) => String(value).toLowerCase().includes(searchTerm).Key(index))
-    );
+    // const filteredRows = filteredData.filter((row,index) =>
+    //   Object.values(row).some((value) => String(value).toLowerCase().includes(searchTerm).Key(index))
+    // );
+    const filteredRows=filteredData.filter(filteredData=>filteredData.company_name.includes(searchTerm))
 
     setFilteredData(filteredRows);
-  };
+    if (searchTerm) {
+        setFilteredData(filteredRows);
+    } else {
+      getCompanyDetails()
+        
+    }
+};
 
   // useEffect(() => {
   //   setFilteredData(data);

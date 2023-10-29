@@ -1,0 +1,17 @@
+.employeeDetails01{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+.employeeModalInput1{
+    width: 100%;
+}
+.employeeModalInput h5{
+    padding: 0;
+    margin: 0;
+}
+.insu_date{
+    display: flex;
+}

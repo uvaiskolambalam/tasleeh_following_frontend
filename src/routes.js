@@ -15,6 +15,8 @@ import Tables from './components/Table/TableGrid'
 // import Users from './pages/Users';
 import UserList from './pages/UserLIst';
 import Familys from './pages/Familys';
+import { EmployeeDetails } from './components/employee-details/EmployeeDetails';
+import Domestic from './pages/Domestic';
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -27,8 +29,10 @@ export default function Router() {
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'familys', element: <Familys/> },
         { path: 'products', element: <ProductsPage /> },
-        { path: 'companies', element: <CompaniesPage/> },
-        { path: 'companies/users/:companyId', element: <UserList/> },
+        { path: 'companies', element: <CompaniesPage /> },
+        {path: 'domestic', element: <Domestic/>},
+        { path: 'companies/users/:companyId', element: <UserList /> },
+        { path: 'companies/employes/:employeeId', element: <EmployeeDetails/> },
         { path: 'invoice', element:  <InvoicePage/> },
         { path: 'blog', element: <BlogPage /> },
         // { path: 'companies/', element: <BlogPage /> },

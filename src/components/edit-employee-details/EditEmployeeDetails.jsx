@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Input, DatePicker, Radio, Select } from 'antd';
-import './AddEmployee.css'
+import './EditEmployeeDetails.css'
 
 
-const AddEmployee = ({handleEmployeeData}) => {
+const EditEmployeeDetails = ({editEmployeeData}) => {
     const [superateInsurance, setSuperateInsurace] = useState(false)
     const [visit, setVisit] = useState(false)
     const [onArrival, setOnArrival] = useState(false)
@@ -48,7 +48,7 @@ const AddEmployee = ({handleEmployeeData}) => {
     return (
         <>
             <Button type="primary" onClick={() => setOpen(true)}>
-                Add
+                Edit
             </Button>
             <Modal
                 title="Employee Details"
@@ -83,7 +83,7 @@ const AddEmployee = ({handleEmployeeData}) => {
                                 values.iloe_exp=values.iloe_exp.format('DD/MM/YYYY')
                             }
                             form.resetFields()
-                            handleEmployeeData(values)
+                            editEmployeeData(values)
                             setOpen(false)
                     })
                     
@@ -97,7 +97,7 @@ const AddEmployee = ({handleEmployeeData}) => {
 
 
                     {/* ================================Row 1 ======================================================== */}
-                    <div className='employeeDetails'>
+                    <div className='employeeDetails01'>
                         <div className="employeeModalInput">
                             <h5>Name</h5>
                             <Form.Item name="employee_name" rules={[
@@ -362,4 +362,4 @@ const AddEmployee = ({handleEmployeeData}) => {
         </>
     );
 };
-export default AddEmployee;
+export default EditEmployeeDetails;

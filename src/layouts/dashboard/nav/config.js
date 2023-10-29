@@ -1,4 +1,5 @@
 // component
+import { Icon } from '@iconify/react';
 import SvgColor from '../../../components/svg-color';
 
 // ----------------------------------------------------------------------
@@ -17,20 +18,21 @@ const navConfig = [
     icon: icon('ic_user'),
   },
   {
+    title: 'companies',
+    path: '/dashboard/companies',
+    icon: icon('ic_blog'),
+  },
+  {
+    title: 'Domestic',
+    path: '/dashboard/domestic',
+    icon: icon('ic_disabled'),
+  },
+  {
     title: 'product',
     path: '/dashboard/products',
     icon: icon('ic_cart'),
   },
-  {
-    title: 'companies',
-    path: '/dashboard/companies',
-    icon: icon('ic_company'),
-  },
-  {
-    title: 'Invoice',
-    path: '/dashboard/Invoice',
-    icon: icon('ic_cart'),
-  },
+  
   {
     title: 'blog',
     path: '/dashboard/blog',

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
@@ -17,12 +18,18 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-
+import SERVER_URL from '../utils/axios';
 // ----------------------------------------------------------------------
 
 export default function DashboardAppPage() {
+  const getCompanyExp = async () => {
+    
+    const response= await SERVER_URL.get('/companies/getCompaniesAboutExpiry')
+  }
   const theme = useTheme();
-
+  useEffect(() => {
+    getCompanyExp()
+  },[])
   return (
     <>
       <Helmet>
@@ -36,7 +43,7 @@ export default function DashboardAppPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Company Licenses About to Expiries" total={713000} icon={'ant-design:android-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
